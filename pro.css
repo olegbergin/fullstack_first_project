@@ -1,0 +1,163 @@
+body {
+    font-family: Arial, sans-serif;
+    direction: ltr; /* כיוון טקסט משמאל לימין */
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #8bbef1;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+    padding-bottom: 80px; /* מרווח מתחתית הדף */
+}
+
+.search-container {
+    position: relative;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-end; /* מיקום בצד ימין */
+}
+
+.search-input {
+    padding: 10px;
+    width: 200px; /* גודל קבוע כדי להתאים למיקום */
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    font-size: 16px;
+}
+
+.search-btn {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-left: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.search-btn .fas {
+    font-size: 18px; /* שינוי גודל האייקון */
+}
+
+.contact-list {
+    padding: 0;
+    margin: 0;
+    list-style-type: none; 
+}
+
+.contact-list li {
+    display: grid;
+    grid-template-columns: 150px 150px 150px auto; /* קביעת גודל עמודות */
+    gap: 10px; /* רווח בין העמודות */
+    align-items: center; /* יישור אנכי של התוכן */
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.contact-list .name {
+    font-weight: bold;
+}
+
+.contact-list .phone,
+.contact-list .info {
+    font-size: 0.9em;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.more-info-btn,
+.delete-btn {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.more-info-btn:hover {
+    background-color: #0056b3;
+}
+
+.delete-btn {
+    background-color: #dc3545; /* צבע למחיקה */
+}
+
+.delete-btn:hover {
+    background-color: #c82333; /* צבע למחיקה בהעברה */
+}
+
+.add-contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.add-contact-form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.add-contact-form .add-btn {
+    padding: 10px;
+    background-color: #218d3a; /* צבע להוספת איש קשר */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.add-contact-form .add-btn:hover {
+    background-color: #185e28; /* צבע להוספת איש קשר בהעברה */
+}
+
+/* יישור הכפתור "מחק את כל אנשי הקשר" בצד ימין */
+.button-container {
+    display: flex;
+    justify-content: flex-end; /* יישור לצד ימין */
+    margin-top: 20px; /* מרווח מעל הכפתור */
+}
+
+.clear-all-btn {
+    padding: 10px 20px;
+    background-color: #dc3545; 
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.clear-all-btn:hover {
+    background-color: #a01b28; 
+}
+
+footer {
+    background-color: #8bbef1;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    margin-top: 20px; 
+}

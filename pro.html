@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Phone Book</title>
+    <link rel="stylesheet" href="pro.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>My Phone Book</h1>
+    </header>
+
+    <!-- Search Bar Section -->
+    <div class="search-container">
+        <input type="text" placeholder="Search contacts..." class="search-input">
+        <button type="submit" class="search-btn">
+            <i class="fas fa-search"></i>
+        </button>
+    </div>
+    
+    <div class="container">
+        <!-- Contact List Section -->
+        <h3>Contact List:</h3>
+        <ol class="contact-list">
+            <li>
+                <span class="name">Patric Dempsey</span>
+                <span class="phone">Phone: 050-1234567</span>
+                <span class="info">Driver</span>
+                <div class="actions">
+                    <button class="more-info-btn">More Info</button>
+                    <button class="delete-btn">Delete</button>
+                </div>
+            </li>
+            <li>
+                <span class="name">Sandra Oh</span>
+                <span class="phone">Phone: 052-9876543</span>
+                <span class="info">Finance Manager</span>
+                <div class="actions">
+                    <button class="more-info-btn">More Info</button>
+                    <button class="delete-btn">Delete</button>
+                </div>
+            </li>
+            <li>
+                <span class="name">Jodie Comer</span>
+                <span class="phone">Phone: 054-3210987</span>
+                <span class="info">Support Technician</span>
+                <div class="actions">
+                    <button class="more-info-btn">More Info</button>
+                    <button class="delete-btn">Delete</button>
+                </div>
+            </li>
+            <li>
+                <span class="name">Freddie Highmore</span>
+                <span class="phone">Phone: 054-8725924</span>
+                <span class="info">Family Doctor</span>
+                <div class="actions">
+                    <button class="more-info-btn">More Info</button>
+                    <button class="delete-btn">Delete</button>
+                </div>
+            </li>
+            <li>
+                <span class="name">Steven Spielberg</span>
+                <span class="phone">Phone: 054-1827364</span>
+                <span class="info">Film Maker</span>
+                <div class="actions">
+                    <button class="more-info-btn">More Info</button>
+                    <button class="delete-btn">Delete</button>
+                </div>
+            </li>
+        </ol>
+        
+        <!-- Clear All Contacts Button -->
+        <div class="button-container">
+            <button class="clear-all-btn">Clear All Contacts</button>
+        </div>
+        <h3>Add New Contact:</h3>
+        <form class="add-contact-form">
+            <input type="text" placeholder="Name" required>
+            <input type="text" placeholder="Phone" required>
+            <input type="text" placeholder="Info">
+            <button type="submit" class="add-btn">Add Contact</button>
+        </form>
+    </div>
+    
+    <footer>
+        
+    </footer>
+</body>
+</html>
