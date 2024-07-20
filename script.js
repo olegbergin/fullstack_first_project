@@ -7,23 +7,39 @@ const contacts = [
     { name: 'Steven Spielberg', phone: '054-1827364', info: 'Film Maker' }
 ];
 
-// פונקציה להצגת אנשי קשר בדף
+// Function to display the list of contacts
 function displayContacts(contactArray) {
+    // Get the contact list element
     const contactList = document.querySelector('.contact-list');
-    contactList.innerHTML = ''; // נקה את הרשימה הקיימת
+    
+    // Clear the current list of contacts
+    contactList.innerHTML = '';
+    
+    // Iterate through the array of contacts
     contactArray.forEach((contact, index) => {
-        // יצירת אלמנט חדש לרשימה
+        // Create a new list item
         const li = document.createElement('li');
+        
+        // Fill the list item with HTML content
         li.innerHTML = `
-            <span class="name">${contact.name}</span>
-            <span class="phone">Phone: ${contact.phone}</span>
-            <span class="info">${contact.info}</span>
+            <div class="contact-info">
+                <!-- Display contact name -->
+                <span class="name">${contact.name}</span>
+                <!-- Display contact phone number -->
+                <span class="phone">Phone: ${contact.phone}</span>
+                <!-- Display additional contact information -->
+                <span class="info">${contact.info}</span>
+            </div>
             <div class="actions">
+                <!-- Button to view more information -->
                 <button class="more-info-btn" data-index="${index}">More Info</button>
+                <!-- Button to delete the contact -->
                 <button class="delete-btn" data-index="${index}">Delete</button>
             </div>
         `;
-        contactList.appendChild(li); // הוספת האלמנט לרשימה
+        
+        // Add the created element to the contact list
+        contactList.appendChild(li);
     });
 }
 
