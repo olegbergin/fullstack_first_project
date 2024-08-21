@@ -1,118 +1,164 @@
-// מערך אנשי קשר לדוגמה
-const contacts = [
-    { name: 'Patric Dempsey', phone: '050-1234567', info: 'Driver' },
-    { name: 'Sandra Oh', phone: '052-9876543', info: 'Finance Manager' },
-    { name: 'Jodie Comer', phone: '054-3210987', info: 'Support Technician' },
-    { name: 'Freddie Highmore', phone: '054-8725924', info: 'Family Doctor' },
-    { name: 'Steven Spielberg', phone: '054-1827364', info: 'Film Maker' }
+// Initial contact records
+let contacts = [
+    { name: 'Patric Dempsey', phone: '050-1234567', info: 'Driver', address: '123 Main St', email: 'patric@example.com', notes: 'Loves racing' },
+    { name: 'Sandra Oh', phone: '052-9876543', info: 'Finance Manager', address: '456 Elm St', email: 'sandra@example.com', notes: 'Enjoys hiking' },
+    { name: 'Jodie Comer', phone: '054-3210987', info: 'Support Technician', address: '789 Maple Ave', email: 'jodie@example.com', notes: 'Tech enthusiast' },
+    { name: 'Freddie Highmore', phone: '054-8725924', info: 'Family Doctor', address: '101 Oak Blvd', email: 'freddie@example.com', notes: 'Friendly and caring' },
+    { name: 'Steven Spielberg', phone: '054-1827364', info: 'Film Maker', address: '202 Pine St', email: 'steven@example.com', notes: 'Loves storytelling' }
 ];
 
 // Function to display the list of contacts
-function displayContacts(contactArray) {
-    // Get the contact list element
+const displayContacts = (contactArray) => {
     const contactList = document.querySelector('.contact-list');
-    
-    // Clear the current list of contacts
     contactList.innerHTML = '';
-    
-    // Iterate through the array of contacts
+
+    if (contactArray.length === 0) {
+        contactList.innerHTML = '<li>No contacts available.</li>';
+        return;
+    }
+
+    contactArray.sort((a, b) => a.name.localeCompare(b.name));
+
     contactArray.forEach((contact, index) => {
-        // Create a new list item
         const li = document.createElement('li');
-        
-        // Fill the list item with HTML content
         li.innerHTML = `
-            <div class="contact-info">
-                <!-- Display contact name -->
+            <div class="contact-name">
                 <span class="name">${contact.name}</span>
-                <!-- Display contact phone number -->
+            </div>
+            <div class="contact-phone">
                 <span class="phone">Phone: ${contact.phone}</span>
-                <!-- Display additional contact information -->
-                <span class="info">${contact.info}</span>
             </div>
             <div class="actions">
-                <!-- Button to view more information -->
+                <button class="edit-btn" data-index="${index}">Edit</button>
                 <button class="more-info-btn" data-index="${index}">More Info</button>
-                <!-- Button to delete the contact -->
                 <button class="delete-btn" data-index="${index}">Delete</button>
             </div>
         `;
-        
-        // Add the created element to the contact list
         contactList.appendChild(li);
     });
-}
+};
 
-// פונקציה לפתיחת חלון ה-popup להוספת/עריכת איש קשר
-function openPopup() {
-    document.querySelector('.popup').style.display = 'flex';
-}
+// Function to open the popup for adding/editing a contact
+const openPopup = (contact = null, index = null) => {
+    const popup = document.querySelector('.popup');
+    popup.style.display = 'flex';
 
-// פונקציה לסגירת חלון ה-popup להוספת/עריכת איש קשר
-function closePopup() {
+    const form = popup.querySelector('.popup-form');
+    form.querySelector('input[placeholder="Name"]').value = contact ? contact.name : '';
+    form.querySelector('input[placeholder="Phone"]').value = contact ? contact.phone : '';
+    form.querySelector('input[placeholder="Address"]').value = contact ? contact.address : '';
+    form.querySelector('input[placeholder="Email"]').value = contact ? contact.email : '';
+    form.querySelector('textarea[placeholder="Notes"]').value = contact ? contact.notes : '';
+
+    form.onsubmit = (e) => {
+        e.preventDefault();
+        const name = form.querySelector('input[placeholder="Name"]').value.trim();
+        const phone = form.querySelector('input[placeholder="Phone"]').value.trim();
+        const address = form.querySelector('input[placeholder="Address"]').value.trim();
+        const email = form.querySelector('input[placeholder="Email"]').value.trim();
+        const notes = form.querySelector('textarea[placeholder="Notes"]').value.trim();
+
+        if (!name || !phone) {
+            alert('Name and phone number are required.');
+            return;
+        }
+
+        if (index !== null) {
+            contacts[index] = { name, phone, address, email, notes };
+        } else {
+            if (contacts.some(contact => contact.name.toLowerCase() === name.toLowerCase())) {
+                alert('A contact with this name already exists.');
+                return;
+            }
+            contacts.push({ name, phone, address, email, notes });
+        }
+
+        displayContacts(contacts);
+        closePopup();
+    };
+};
+
+// Function to close the popup
+const closePopup = () => {
     document.querySelector('.popup').style.display = 'none';
-}
+};
 
-// פונקציה לפתיחת חלון ה-popup להצגת מידע נוסף על איש קשר
-function openInfoPopup(contact) {
+// Function to open the info popup
+const openInfoPopup = (contact) => {
     document.querySelector('.popup-info').style.display = 'flex';
-    document.querySelector('.info-content').innerText = `Name: ${contact.name}\nPhone: ${contact.phone}\nInfo: ${contact.info}`;
-}
+    document.querySelector('.info-content').innerText = `
+        Name: ${contact.name}
+        Phone: ${contact.phone}
+        Address: ${contact.address || 'N/A'}
+        Email: ${contact.email || 'N/A'}
+        Notes: ${contact.notes || 'N/A'}
+    `;
+};
 
-// פונקציה לסגירת חלון ה-popup להצגת מידע נוסף על איש קשר
-function closeInfoPopup() {
+// Function to close the info popup
+const closeInfoPopup = () => {
     document.querySelector('.popup-info').style.display = 'none';
-}
+};
 
-// הוספת אירועים לכפתורים
-document.querySelector('.open-popup-btn').addEventListener('click', openPopup);
-document.querySelector('.close-popup-btn').addEventListener('click', closePopup);
-document.querySelector('.close-popup-info-btn').addEventListener('click', closeInfoPopup);
+// Function to clear all contacts
+const clearAllContacts = () => {
+    contacts = [];
+    displayContacts(contacts);
+};
 
-// טיפול בהוספת איש קשר חדש דרך ה-popup
-document.querySelector('.popup-form').addEventListener('submit', function(e) {
-    e.preventDefault(); // מניעת ברירת המחדל של שליחת הטופס
-    const name = this.querySelector('input[placeholder="Name"]').value;
-    const phone = this.querySelector('input[placeholder="Phone"]').value;
-    const info = this.querySelector('input[placeholder="Info"]').value;
-    contacts.push({ name, phone, info }); // הוספת איש הקשר החדש למערך
-    displayContacts(contacts); // עדכון התצוגה
-    closePopup(); // סגירת ה-popup
-});
-
-// הוספת אירועים לכפתורי המחיקה והמידע הנוסף ברשימת אנשי הקשר
-document.querySelector('.contact-list').addEventListener('click', function(e) {
-    if (e.target.classList.contains('delete-btn')) {
-        const index = e.target.getAttribute('data-index');
-        contacts.splice(index, 1); // מחיקת איש הקשר מהמערך
-        displayContacts(contacts); // עדכון התצוגה
-    }
-    if (e.target.classList.contains('more-info-btn')) {
-        const index = e.target.getAttribute('data-index');
-        const contact = contacts[index];
-        openInfoPopup(contact); // פתיחת ה-popup להצגת מידע נוסף
-    }
-});
-
-// פונקציה למחיקת כל אנשי הקשר
-function clearAllContacts() {
-    contacts.length = 0; // ריקון המערך
-    displayContacts(contacts); // עדכון התצוגה
-}
-
-// הוספת אירוע לכפתור מחיקת כל אנשי הקשר
-document.querySelector('.clear-all-btn').addEventListener('click', clearAllContacts);
-
-// פונקציה לחיפוש אנשי קשר
-document.querySelector('.search-input').addEventListener('input', function(e) {
-    const searchTerm = e.target.value.toLowerCase(); // קבלת מחרוזת החיפוש
+// Function for searching contacts
+const searchContacts = (e) => {
+    const searchTerm = e.target.value.toLowerCase();
     const filteredContacts = contacts.filter(contact => 
         contact.name.toLowerCase().includes(searchTerm) || 
         contact.phone.toLowerCase().includes(searchTerm) || 
         contact.info.toLowerCase().includes(searchTerm)
     );
-    displayContacts(filteredContacts); // הצגת אנשי הקשר המסוננים
+    displayContacts(filteredContacts);
+};
+
+// Hover effect for contact list items
+const addHoverEffect = (e) => {
+    if (e.target.closest('li')) {
+        e.target.closest('li').classList.add('hover');
+    }
+};
+
+const removeHoverEffect = (e) => {
+    if (e.target.closest('li')) {
+        e.target.closest('li').classList.remove('hover');
+    }
+};
+
+// Creative effect toggle
+const toggleCreativeEffect = () => {
+    document.body.classList.toggle('creative-effect');
+};
+
+// Add event listeners
+document.querySelector('.open-popup-btn').addEventListener('click', () => openPopup());
+document.querySelector('.close-popup-btn').addEventListener('click', closePopup);
+document.querySelector('.close-popup-info-btn').addEventListener('click', closeInfoPopup);
+document.querySelector('.clear-all-btn').addEventListener('click', clearAllContacts);
+document.querySelector('.search-input').addEventListener('input', searchContacts);
+document.querySelector('.contact-list').addEventListener('mouseover', addHoverEffect);
+document.querySelector('.contact-list').addEventListener('mouseout', removeHoverEffect);
+document.querySelector('.creative-effect-btn').addEventListener('click', toggleCreativeEffect);
+
+// Add event listeners for delete, more info, and edit buttons
+document.querySelector('.contact-list').addEventListener('click', (e) => {
+    const index = e.target.getAttribute('data-index');
+    if (e.target.classList.contains('delete-btn')) {
+        contacts.splice(index, 1);
+        displayContacts(contacts);
+    }
+    if (e.target.classList.contains('more-info-btn')) {
+        openInfoPopup(contacts[index]);
+    }
+    if (e.target.classList.contains('edit-btn')) {
+        openPopup(contacts[index], index);
+    }
 });
 
-// הצגת אנשי הקשר בעת טעינת הדף
+// Display contacts on page load
 displayContacts(contacts);

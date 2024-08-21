@@ -1,6 +1,5 @@
 /* Global Styles */
 html, body {
-    height: 100%;
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
@@ -12,6 +11,7 @@ html, body {
 body {
     display: flex;
     flex-direction: column;
+    min-height: 100vh; /* Ensure full viewport height */
 }
 
 /* Header */
@@ -26,7 +26,9 @@ header {
 /* Main Container */
 .container {
     flex: 1;
-    max-width: 800px;
+    width: 60%; /* Use a percentage to ensure responsiveness */
+    max-width: 1000px; /* Set a maximum width */
+    min-width: 600px;
     margin: 0 auto;
     padding: 2rem;
 }
@@ -73,35 +75,37 @@ header {
 .contact-list {
     padding: 0;
     margin: 0;
-    list-style-type: none;
-    width: 100%;
 }
 
 .contact-list li {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     margin-bottom: 1rem;
     padding: 1rem;
     background-color: #f8f9fa;
     border: 1px solid #dee2e6;
     border-radius: 0.25rem;
+    transition: background-color 0.3s ease;
 }
 
-.contact-info {
+.contact-name, .contact-phone {
+    flex: 1;
     display: flex;
     align-items: center;
-    gap: 1rem;
-    flex: 1;
+    justify-content: flex-start;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 1rem; /* Add margin for spacing */
 }
 
-.contact-list .name {
+.contact-name .name {
     font-weight: bold;
-    min-width: 150px;
+    color: #212529;
 }
 
-.contact-list .phone,
-.contact-list .info {
+.contact-phone .phone {
     color: #6c757d;
 }
 
@@ -111,14 +115,17 @@ header {
 }
 
 .more-info-btn,
-.delete-btn {
-    padding: 0.5rem 1rem;
+.delete-btn,
+.edit-btn {
+    padding: 0.4rem 0.8rem;
     color: #fff;
     border: none;
     border-radius: 0.25rem;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 0.875rem;
     transition: background-color 0.15s ease-in-out;
+    min-width: 60px;
+    text-align: center;
 }
 
 .more-info-btn {
@@ -137,32 +144,55 @@ header {
     background-color: #bb2d3b;
 }
 
+.edit-btn {
+    background-color: #ffc107;
+}
+
+.edit-btn:hover {
+    background-color: #e0a800;
+}
+
 /* Button Row */
 .button-row {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column; /* Stack rows vertically */
+    align-items: center; /* Center the creative button horizontally */
     margin-top: 2rem;
+    gap: 1rem; /* Space between rows */
 }
 
-.open-popup-btn {
+.button-row .top-buttons {
+    display: flex;
+    gap: 1rem; /* Space between the two buttons */
+}
+
+.open-popup-btn, .clear-all-btn {
+    padding: 0.75rem 1.5rem;
     background-color: #4a4e69;
     color: #fff;
     border: none;
-    padding: 0.75rem 1.5rem;
     border-radius: 0.25rem;
     cursor: pointer;
     font-size: 1rem;
     transition: background-color 0.15s ease-in-out;
-    display: inline-block;
 }
 
-.open-popup-btn:hover {
+.open-popup-btn:hover, .clear-all-btn:hover {
     background-color: #3d405b;
 }
 
 .clear-all-btn {
-    padding: 0.75rem 1.5rem;
     background-color: #e63946;
+}
+
+.clear-all-btn:hover {
+    background-color: #d62828;
+}
+
+.creative-effect-btn {
+    margin-top: 1rem; /* Add space above the button */
+    padding: 0.75rem 1.5rem;
+    background-color: #6a4c93;
     color: #fff;
     border: none;
     border-radius: 0.25rem;
@@ -171,8 +201,8 @@ header {
     transition: background-color 0.15s ease-in-out;
 }
 
-.clear-all-btn:hover {
-    background-color: #d62828;
+.creative-effect-btn:hover {
+    background-color: #5a3c83;
 }
 
 /* Footer */
@@ -221,7 +251,7 @@ footer {
     gap: 1rem;
 }
 
-.popup-form input {
+.popup-form input, .popup-form textarea {
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
     padding: 0.75rem;
@@ -229,7 +259,7 @@ footer {
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.popup-form input:focus {
+.popup-form input:focus, .popup-form textarea:focus {
     border-color: #4a4e69;
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(74, 78, 105, 0.25);
@@ -256,8 +286,23 @@ footer {
     line-height: 1.5;
 }
 
+/* Hover Effect */
+.contact-list li.hover {
+    background-color: #e0e0e0;
+}
+
+/* Creative Effect */
+.creative-effect {
+    background-color: #4a4e69;
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
+    .container {
+        width: 95%; /* Slightly reduce width on smaller screens */
+        min-width: 350px;
+        padding: 1rem;
+    }
     .contact-list li,
     .contact-info {
         flex-direction: column;
@@ -273,18 +318,11 @@ footer {
         width: 100%;
         justify-content: flex-start;
     }
-    .button-row {
-        gap: 1rem; /* Add gap between buttons */
-    }
-
-    .open-popup-btn, .clear-all-btn {
-        flex: 1; /* Allow buttons to grow and fill available space */
-    }
 }
 
 @media (max-width: 480px) {
     .container {
-        padding: 1rem;
+        padding: 0.5rem;
     }
     
     .search-input {

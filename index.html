@@ -13,7 +13,6 @@
         <h1>My Phone Book</h1>
     </header>
 
-    <!-- אזור שורת החיפוש -->
     <div class="search-container">
         <input type="text" placeholder="Search contacts..." class="search-input">
         <button type="submit" class="search-btn">
@@ -22,17 +21,18 @@
     </div>
     
     <div class="container">
-        <!-- אזור רשימת אנשי קשר -->
         <h3>Contact List:</h3>
         <ul class="contact-list"></ul>
         
-        <!-- כפתור למחיקת כל אנשי הקשר -->
         <div class="button-row">
-            <button class="open-popup-btn">Add New Contact</button>
-            <button class="clear-all-btn">Clear All Contacts</button>
+            <div class="top-buttons">
+                <button class="open-popup-btn">Add New Contact</button>
+                <button class="clear-all-btn">Clear All Contacts</button>
+            </div>
+            <button class="creative-effect-btn">Toggle Effect</button>
         </div>
-        
-        <!-- חלון popup להוספת/עריכת איש קשר -->
+
+
         <div class="popup" style="display: none;">
             <div class="popup-content">
                 <span class="close-popup-btn">&times;</span>
@@ -40,13 +40,14 @@
                 <form class="popup-form">
                     <input type="text" placeholder="Name" required>
                     <input type="text" placeholder="Phone" required>
-                    <input type="text" placeholder="Info">
+                    <input type="text" placeholder="Address">
+                    <input type="email" placeholder="Email">
+                    <textarea placeholder="Notes"></textarea>
                     <button type="submit" class="save-btn">Save</button>
                 </form>
             </div>
         </div>
         
-        <!-- חלון popup להצגת מידע נוסף על איש קשר -->
         <div class="popup-info" style="display: none;">
             <div class="popup-content">
                 <span class="close-popup-info-btn">&times;</span>
@@ -57,10 +58,11 @@
     </div>
     
     <footer>
-        
+        <p>Made by</p>
+        <p>Oleg Bergin</p>
+        <p>Stefany Kazimirchuk</p>
     </footer>
 
-    <!-- קישור לקובץ ה-JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
