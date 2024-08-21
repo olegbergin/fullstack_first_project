@@ -299,7 +299,7 @@ footer {
 /* Responsive Styles */
 @media (max-width: 768px) {
     .container {
-        width: 95%; /* Slightly reduce width on smaller screens */
+        width: 90%; /* Slightly reduce width on smaller screens */
         min-width: 350px;
         padding: 1rem;
     }
