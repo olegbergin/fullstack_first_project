@@ -4,15 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Phone Book</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- Link to external CSS and fonts -->
+    <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+    <!-- Header section -->
     <header>
         <h1>My Phone Book</h1>
     </header>
 
+    <!-- Search bar for filtering contacts -->
     <div class="search-container">
         <input type="text" placeholder="Search contacts..." class="search-input">
         <button type="submit" class="search-btn">
@@ -20,10 +23,12 @@
         </button>
     </div>
     
+    <!-- Main container for contact list and actions -->
     <div class="container">
         <h3>Contact List:</h3>
         <ul class="contact-list"></ul>
         
+        <!-- Buttons for adding and clearing contacts -->
         <div class="button-row">
             <div class="top-buttons">
                 <button class="open-popup-btn">Add New Contact</button>
@@ -32,7 +37,7 @@
             <button class="creative-effect-btn">Toggle Effect</button>
         </div>
 
-
+        <!-- Popup for adding/editing contacts -->
         <div class="popup" style="display: none;">
             <div class="popup-content">
                 <span class="close-popup-btn">&times;</span>
@@ -48,6 +53,7 @@
             </div>
         </div>
         
+        <!-- Popup for displaying contact info -->
         <div class="popup-info" style="display: none;">
             <div class="popup-content">
                 <span class="close-popup-info-btn">&times;</span>
@@ -57,12 +63,14 @@
         </div>
     </div>
     
+    <!-- Footer with authors' names -->
     <footer>
         <p>Made by</p>
         <p>Oleg Bergin</p>
         <p>Stefany Kazimirchuk</p>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Link to external JavaScript file -->
+    <script src="js/script.js"></script>
 </body>
 </html>

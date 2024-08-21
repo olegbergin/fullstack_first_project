@@ -1,0 +1,331 @@
+/* Global Styles */
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+    color: #212529;
+    line-height: 1.5;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure full viewport height */
+}
+
+/* Header */
+header {
+    background-color: #4a4e69;
+    color: #fff;
+    padding: 2rem 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Main Container */
+.container {
+    flex: 1;
+    width: 60%; /* Use a percentage to ensure responsiveness */
+    max-width: 1000px; /* Set a maximum width */
+    min-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Search Bar */
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.search-input {
+    width: 100%;
+    max-width: 600px;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.search-input:focus {
+    border-color: #4a4e69;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(74, 78, 105, 0.25);
+}
+
+.search-btn {
+    background-color: #4a4e69;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1rem;
+    margin-left: -1px;
+    border-radius: 0 0.25rem 0.25rem 0;
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out;
+}
+
+.search-btn:hover {
+    background-color: #3d405b;
+}
+
+/* Contact List */
+.contact-list {
+    padding: 0;
+    margin: 0;
+}
+
+.contact-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s ease;
+}
+
+.contact-name, .contact-phone {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 1rem; /* Add margin for spacing */
+}
+
+.contact-name .name {
+    font-weight: bold;
+    color: #212529;
+}
+
+.contact-phone .phone {
+    color: #6c757d;
+}
+
+.actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.more-info-btn,
+.delete-btn,
+.edit-btn {
+    padding: 0.4rem 0.8rem;
+    color: #fff;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: background-color 0.15s ease-in-out;
+    min-width: 60px;
+    text-align: center;
+}
+
+.more-info-btn {
+    background-color: #0d6efd;
+}
+
+.more-info-btn:hover {
+    background-color: #0b5ed7;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+}
+
+.delete-btn:hover {
+    background-color: #bb2d3b;
+}
+
+.edit-btn {
+    background-color: #ffc107;
+}
+
+.edit-btn:hover {
+    background-color: #e0a800;
+}
+
+/* Button Row */
+.button-row {
+    display: flex;
+    flex-direction: column; /* Stack rows vertically */
+    align-items: center; /* Center the creative button horizontally */
+    margin-top: 2rem;
+    gap: 1rem; /* Space between rows */
+}
+
+.button-row .top-buttons {
+    display: flex;
+    gap: 1rem; /* Space between the two buttons */
+}
+
+.open-popup-btn, .clear-all-btn {
+    padding: 0.75rem 1.5rem;
+    background-color: #4a4e69;
+    color: #fff;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.15s ease-in-out;
+}
+
+.open-popup-btn:hover, .clear-all-btn:hover {
+    background-color: #3d405b;
+}
+
+.clear-all-btn {
+    background-color: #e63946;
+}
+
+.clear-all-btn:hover {
+    background-color: #d62828;
+}
+
+.creative-effect-btn {
+    margin-top: 1rem; /* Add space above the button */
+    padding: 0.75rem 1.5rem;
+    background-color: #6a4c93;
+    color: #fff;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.15s ease-in-out;
+}
+
+.creative-effect-btn:hover {
+    background-color: #5a3c83;
+}
+
+/* Footer */
+footer {
+    background-color: #4a4e69;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+
+/* Popups */
+.popup, .popup-info {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 0.25rem;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+    position: relative;
+}
+
+.close-popup-btn, .close-popup-info-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #6c757d;
+}
+
+.popup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.popup-form input, .popup-form textarea {
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    padding: 0.75rem;
+    font-size: 1rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.popup-form input:focus, .popup-form textarea:focus {
+    border-color: #4a4e69;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(74, 78, 105, 0.25);
+}
+
+.popup-form .save-btn {
+    padding: 0.75rem;
+    background-color: #4a4e69;
+    color: #fff;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.15s ease-in-out;
+}
+
+.popup-form .save-btn:hover {
+    background-color: #3d405b;
+}
+
+.info-content {
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+}
+
+/* Hover Effect */
+.contact-list li.hover {
+    background-color: #e0e0e0;
+}
+
+/* Creative Effect */
+.creative-effect {
+    background-color: #4a4e69;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .container {
+        width: 95%; /* Slightly reduce width on smaller screens */
+        min-width: 350px;
+        padding: 1rem;
+    }
+    .contact-list li,
+    .contact-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .contact-info {
+        gap: 0.25rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .actions {
+        width: 100%;
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0.5rem;
+    }
+    
+    .search-input {
+        font-size: 0.875rem;
+    }
+}

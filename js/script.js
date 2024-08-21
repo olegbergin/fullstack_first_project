@@ -1,3 +1,5 @@
+"use strict";
+
 // Initial contact records
 let contacts = [
     { name: 'Patric Dempsey', phone: '050-1234567', info: 'Driver', address: '123 Main St', email: 'patric@example.com', notes: 'Loves racing' },
@@ -17,8 +19,10 @@ const displayContacts = (contactArray) => {
         return;
     }
 
+    // Sort contacts by name
     contactArray.sort((a, b) => a.name.localeCompare(b.name));
 
+    // Create list items for each contact
     contactArray.forEach((contact, index) => {
         const li = document.createElement('li');
         li.innerHTML = `
