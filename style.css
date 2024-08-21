@@ -1,18 +1,20 @@
+/* Global Styles */
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Roboto', sans-serif;
     background-color: #f8f9fa;
     color: #212529;
     line-height: 1.5;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
 header {
     background-color: #4a4e69;
     color: #fff;
@@ -21,13 +23,15 @@ header {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+/* Main Container */
 .container {
     flex: 1;
-    max-width: 1400px;
-    margin: 0 20%;
+    max-width: 800px;
+    margin: 0 auto;
     padding: 2rem;
 }
 
+/* Search Bar */
 .search-container {
     display: flex;
     justify-content: center;
@@ -36,7 +40,7 @@ header {
 
 .search-input {
     width: 100%;
-    max-width: 400px;
+    max-width: 600px;
     padding: 0.75rem 1rem;
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
@@ -65,19 +69,20 @@ header {
     background-color: #3d405b;
 }
 
+/* Contact List */
 .contact-list {
     padding: 0;
     margin: 0;
     list-style-type: none;
-    width: 100%
+    width: 100%;
 }
 
 .contact-list li {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 0.5rem;
-    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
     background-color: #f8f9fa;
     border: 1px solid #dee2e6;
     border-radius: 0.25rem;
@@ -91,7 +96,7 @@ header {
 }
 
 .contact-list .name {
-    font-weight: 600;
+    font-weight: bold;
     min-width: 150px;
 }
 
@@ -107,12 +112,12 @@ header {
 
 .more-info-btn,
 .delete-btn {
-    padding: 0.375rem 0.75rem;
+    padding: 0.5rem 1rem;
     color: #fff;
     border: none;
     border-radius: 0.25rem;
     cursor: pointer;
-    font-size: 0.875rem;
+    font-size: 1rem;
     transition: background-color 0.15s ease-in-out;
 }
 
@@ -132,54 +137,26 @@ header {
     background-color: #bb2d3b;
 }
 
+/* Button Row */
 .button-row {
     display: flex;
-    justify-content: space-between; /* Distribute buttons to the ends */
+    justify-content: space-between;
     margin-top: 2rem;
 }
 
 .open-popup-btn {
-    background-color: #4a4e69; /* Match the primary color */
-    color: #fff; /* White text for contrast */
-    border: none; /* Remove default border */
-    padding: 0.75rem 1.5rem; /* Add padding for size */
-    border-radius: 0.25rem; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor on hover */
-    font-size: 1rem; /* Match font size */
-    transition: background-color 0.15s ease-in-out; /* Smooth transition */
-    display: inline-block; /* Ensure it's an inline block for padding */
-}
-
-.open-popup-btn:hover {
-    background-color: #3d405b; /* Darken on hover */
-}
-
-.add-contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-top: 2rem;
-}
-
-.add-contact-form input {
-    padding: 0.75rem;
-    border: 1px solid #ced4da;
-    border-radius: 0.25rem;
-    font-size: 1rem;
-}
-
-.add-contact-form .add-btn {
     background-color: #4a4e69;
     color: #fff;
     border: none;
+    padding: 0.75rem 1.5rem;
     border-radius: 0.25rem;
-    padding: 0.75rem;
     cursor: pointer;
     font-size: 1rem;
     transition: background-color 0.15s ease-in-out;
+    display: inline-block;
 }
 
-.add-contact-form .add-btn:hover {
+.open-popup-btn:hover {
     background-color: #3d405b;
 }
 
@@ -198,6 +175,7 @@ header {
     background-color: #d62828;
 }
 
+/* Footer */
 footer {
     background-color: #4a4e69;
     color: #fff;
@@ -205,6 +183,7 @@ footer {
     text-align: center;
 }
 
+/* Popups */
 .popup, .popup-info {
     position: fixed;
     top: 0;
@@ -277,6 +256,7 @@ footer {
     line-height: 1.5;
 }
 
+/* Responsive Styles */
 @media (max-width: 768px) {
     .contact-list li,
     .contact-info {
@@ -293,6 +273,13 @@ footer {
         width: 100%;
         justify-content: flex-start;
     }
+    .button-row {
+        gap: 1rem; /* Add gap between buttons */
+    }
+
+    .open-popup-btn, .clear-all-btn {
+        flex: 1; /* Allow buttons to grow and fill available space */
+    }
 }
 
 @media (max-width: 480px) {
@@ -303,4 +290,4 @@ footer {
     .search-input {
         font-size: 0.875rem;
     }
-} 
+}
