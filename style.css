@@ -1,10 +1,16 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 body {
+    display: flex;
+    flex-direction: column;
     font-family: 'Inter', sans-serif;
     background-color: #f8f9fa;
     color: #212529;
     line-height: 1.5;
-    margin: 0;
-    padding: 0;
 }
 
 header {
@@ -16,8 +22,9 @@ header {
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
+    flex: 1;
+    max-width: 1400px;
+    margin: 0 20%;
     padding: 2rem;
 }
 
@@ -62,6 +69,7 @@ header {
     padding: 0;
     margin: 0;
     list-style-type: none;
+    width: 100%
 }
 
 .contact-list li {
@@ -124,6 +132,28 @@ header {
     background-color: #bb2d3b;
 }
 
+.button-row {
+    display: flex;
+    justify-content: space-between; /* Distribute buttons to the ends */
+    margin-top: 2rem;
+}
+
+.open-popup-btn {
+    background-color: #4a4e69; /* Match the primary color */
+    color: #fff; /* White text for contrast */
+    border: none; /* Remove default border */
+    padding: 0.75rem 1.5rem; /* Add padding for size */
+    border-radius: 0.25rem; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 1rem; /* Match font size */
+    transition: background-color 0.15s ease-in-out; /* Smooth transition */
+    display: inline-block; /* Ensure it's an inline block for padding */
+}
+
+.open-popup-btn:hover {
+    background-color: #3d405b; /* Darken on hover */
+}
+
 .add-contact-form {
     display: flex;
     flex-direction: column;
@@ -153,12 +183,6 @@ header {
     background-color: #3d405b;
 }
 
-.button-container {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 2rem;
-}
-
 .clear-all-btn {
     padding: 0.75rem 1.5rem;
     background-color: #e63946;
@@ -179,7 +203,6 @@ footer {
     color: #fff;
     padding: 1rem;
     text-align: center;
-    margin-top: 2rem;
 }
 
 .popup, .popup-info {
@@ -280,4 +303,4 @@ footer {
     .search-input {
         font-size: 0.875rem;
     }
-}
+} 
