@@ -300,7 +300,7 @@ footer {
 @media (max-width: 768px) {
     .container {
         width: 90%; /* Slightly reduce width on smaller screens */
-        min-width: 350px;
+        min-width: 300px;
         padding: 1rem;
     }
     .contact-list li,
